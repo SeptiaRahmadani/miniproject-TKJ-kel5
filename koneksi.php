@@ -2,5 +2,5 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "mydb";
+$database = "data_peminjaman_alat";
 ?>
