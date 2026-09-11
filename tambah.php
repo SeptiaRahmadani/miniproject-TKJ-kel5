@@ -15,7 +15,7 @@ if (isset($_POST['submit'])){
 
     <html lang="en">
     <head>                                                                          
-    <head>
+    </head>
     <body>
      <from action="" method="POST">
         <label for="nama_alat">Nama Alat:</label>
@@ -27,3 +27,6 @@ if (isset($_POST['submit'])){
         <label for="kondisi">Kondisi:</label>
         <input type="text" name="kondisi" id="kondisi" required><br><br>
         <input type="submit" name="submit" value="Submit">
+     </from>
+    </body>
+    </html>
