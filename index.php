@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?php 
-=======
-    <?php 
->>>>>>> 630ccc27ff9e172d54d449c58553c9a3fccb17d8
 include "koneksi.php";
 $query = "SELECT * FROM data_alat";
 $hasil = mysqli_query($koneksi, $query);
