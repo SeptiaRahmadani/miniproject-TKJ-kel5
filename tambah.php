@@ -1,26 +1,29 @@
 <?php
 include "koneksi.php";
 if (isset($_POST['submit'])){
-    $namasiswa = $_POST['$namasiswa'];
-    $kelas = $_POST['kelas'];
-    $Judulbuku = $_POST['Judulbuku'];
-    $query = "INSERT INTO peminjaman
-    (namasiswa, kelas, Judulbuku) VALUES
-    ('FIKRI PUTRA", 'XIII 9', 'Sistem Listrik')";
-    mysqli_query($koneksi, $query);
-    header("Location: tampil.php");}
+    $nama_alat = $_POST['$nama_alat'];
+    $merk = $_POST['merk'];
+    $total_stok = $_POST['total_stok'];
+    $kondisi = $_POST['kondisi'];
+    $query = "INSERT INTO data_alat (nama_alat, merk, total_stok, kondisi) VALUES ('$nama_alat', '$merk', '$total_stok', '$kondisi')";
+    $hasil = mysqli_query($koneksi, $query);
+    if ($hasil) {
+        header("Location: tampil.php");
     }
-    ?>
+}
+?>
 
     <html lang="en">
     <head>                                                                          
     <head>
     <body>
      <from action="" method="POST">
-        <label for="namasiswa">Nama Siswa:</label>
-        <input type="text" name="namasiswa" id="namasiswa" required><br><br>
-        <label for="kelas">Kelas:</label>
-        <input type="text" name="kelas" id="kelas" required><br><br>
-        <label for="Judulbuku">Judul Buku:</label>
-        <input type="text" name="Judulbuku" id="Judulbuku" required><br><br>
+        <label for="nama_alat">Nama Alat:</label>
+        <input type="text" name="nama_alat" id="nama_alat" required><br><br>
+        <label for="merk">Merk:</label>
+        <input type="text" name="merk" id="merk" required><br><br>
+        <label for="total_stok">Total Stok:</label>
+        <input type="number" name="total_stok" id="total_stok" required><br><br>
+        <label for="kondisi">Kondisi:</label>
+        <input type="text" name="kondisi" id="kondisi" required><br><br>
         <input type="submit" name="submit" value="Submit">
