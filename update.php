@@ -6,12 +6,12 @@ if (isset($_POST['submit'])) {
     $merk = $_POST['merk'];
     $total_stok = $_POST['total_stok'];
     $kondisi = $_POST['kondisi'];
-    $query = "UPDATE peminjaman SET nama_alat='$nama_alat', merk='$merk', total_stok='$total_stok', kondisi='$kondisi' WHERE id='$id'";
+    $query = "UPDATE data_alat SET nama_alat='$nama_alat', merk='$merk', total_stok='$total_stok', kondisi='$kondisi' WHERE id='$id'";
     mysqli_query($koneksi, $query);
     header("Location: tampil.php");
     exit;
     }  
-    $query_lama = "SELECT * FROM peminjaman WHERE id='$id'";
+    $query_lama = "SELECT * FROM data_alat WHERE id='$id'";
     $hasil_lama = mysqli_query($koneksi, $query_lama);
     $data = mysqli_fetch_assoc($hasil_lama);
     ?>  
