@@ -31,6 +31,7 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
         <td>
             <a href="update.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Update</a>
             <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+            <a href="tambah.php?id=<?php echo $row['id']; ?>" class="btn btn-success btn-sm">Tambah Data</a>
         </td>
     </tr>  
 
