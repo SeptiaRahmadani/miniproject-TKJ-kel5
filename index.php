@@ -10,7 +10,6 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Daftar Peminjaman Alat</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<<<<<<< HEAD
     
 
         <!-- Bootstrap 5 CSS -->
@@ -74,7 +73,6 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
 
            </body>
            </html>
-=======
     </head>
     <body>
         <h1 class="text-center mt-3">Daftar Peminjaman Alat</h1>
@@ -106,4 +104,4 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
         </div>
     </body>
 </html> 
->>>>>>> f3aee6764f935e0722fe8d97932c84a15acd1270
+
