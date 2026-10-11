@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Jurusan TJKT</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 20, 40, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00d9ff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: .3s;
+        }
+
+        nav ul li a:hover {
+            color: #00d9ff;
+        }
+
+        /* SHARED SECTION BACKGROUND */
+        section {
+            background:
+                linear-gradient(rgba(4, 15, 35, .85), rgba(4, 15, 35, .9)),
+                url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 10%;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #00d9ff;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: #dce8f5;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 8px;
+            background: #00c9f5;
+            color: #061426;
+            text-decoration: none;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: white;
+        }
+
+        /* GENERAL */
+        section {
+            padding: 90px 8%;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title h2 {
+            font-size: 35px;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .title p {
+            color: #dce8f5;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: auto;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.15);
+        }
+
+        .about-text h3 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: #dce8f5;
+            margin-bottom: 15px;
+        }
+
+        /* GURU */
+        .guru-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .guru-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+            transition: .3s;
+        }
+
+        .guru-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .guru-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .guru-info {
+            padding: 22px;
+        }
+
+        .guru-info h3 {
+            margin-bottom: 7px;
+        }
+
+        .guru-info .jabatan {
+            color: #00a8d0;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .guru-info p {
+            color: #68758a;
+            line-height: 1.6;
+        }
+
+        /* KOMPETENSI */
+        .kompetensi {
+            color: white;
+        }
+
+        .skill-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill {
+            background: #142744;
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .skill:hover {
+            background: #00a8d0;
+            transform: translateY(-5px);
+        }
+
+        .skill .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .skill h3 {
+            margin-bottom: 10px;
+        }
+
+        .skill p {
+            color: #cbd7e7;
+            line-height: 1.5;
+        }
+
+        /* MATERI */
+        .materi-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .materi {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #00bce4;
+            box-shadow: 0 8px 25px rgba(0,0,0,.07);
+        }
+
+        .materi h3 {
+            margin-bottom: 12px;
+        }
+
+        .materi p {
+            color: #68758a;
+            line-height: 1.6;
+        }
+
+        /* KEGIATAN */
+        .project-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,.08);
+        }
+
+        .project img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 22px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: #68758a;
+            line-height: 1.6;
+        }
+
+        /* KONTAK */
+        .contact {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-box {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+        }
+
+        .contact-box p {
+            margin: 12px 0;
+            color: #596579;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #071225;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer span {
+            color: #00d9ff;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 900px) {
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .guru-container,
+            .project-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skill-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+        }
+
+        @media(max-width: 600px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .guru-container,
+            .project-container,
+            .skill-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">TJKT<span>.</span></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#guru">Guru</a></li>
+            <li><a href="#kompetensi">Kompetensi</a></li>
+            <li><a href="#materi">Materi</a></li>
+            <li><a href="#kegiatan">Kegiatan</a></li>
+            <li><a href="#data-peminjaman">Data Peminjaman</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- HOME -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>SELAMAT DATANG DI<span>JURUSAN TJKT</span></h1>
+
+        <p>
+            Teknik Jaringan Komputer dan Telekomunikasi merupakan bidang
+            keahlian yang mempelajari komputer, jaringan, server,
+            telekomunikasi, keamanan jaringan, serta teknologi informasi.
+        </p>
+
+        <a href="#about" class="btn">Jelajahi Website</a>
+    </div>
+</section>
+
+
+<!-- TENTANG -->
+<section id="about">
+
+    <div class="title">
+        <h2>Tentang Jurusan TJKT</h2>
+        <p>Mengenal lebih dekat Teknik Jaringan Komputer dan Telekomunikasi</p>
+    </div>
+
+    <div class="about">
+
+        <img
+            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80"
+            alt="Jaringan Komputer">
+
+        <div class="about-text">
+
+            <h3>Teknik Jaringan Komputer dan Telekomunikasi</h3>
+
+            <p>
+                TJKT adalah jurusan yang mempelajari berbagai teknologi
+                jaringan komputer dan telekomunikasi.
+            </p>
+
+            <p>
+                Siswa mempelajari perakitan komputer, instalasi sistem
+                operasi, konfigurasi jaringan, server, perangkat jaringan,
+                keamanan jaringan, fiber optik, dan teknologi komunikasi.
+            </p>
+
+            <p>
+                Pembelajaran TJKT menggabungkan teori dan praktik sehingga
+                siswa dapat mengembangkan keterampilan teknis dan kemampuan
+                pemecahan masalah.
+            </p>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- GURU -->
+<section id="guru">
+
+    <div class="title">
+        <h2>Guru Jurusan TJKT</h2>
+        <p>Tim pengajar yang membimbing siswa dalam pembelajaran TJKT</p>
+    </div>
+
+    <div class="guru-container">
+
+        <div class="guru-card">
+            <img src="../hahaha/images/Guntur-Irfan-Haerudin-S.Kom.png">
+
+            <div class="guru-info">
+                <h3>Ahmad Fauzi, S.Kom.</h3>
+                <div class="jabatan">Guru Jaringan Komputer</div>
+                <p>
+                    Mengajar jaringan komputer, routing, switching,
+                    konfigurasi perangkat jaringan dan troubleshooting.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="guru-card">
+            <img src="../hahaha/images/Nurwati-S.Kom.png">
+
+            <div class="guru-info">
+                <h3>Siti Rahma, S.Kom.</h3>
+                <div class="jabatan">Guru Administrasi Sistem</div>
+                <p>
+                    Mengajarkan sistem operasi, server, administrasi
+                    sistem dan layanan jaringan.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="guru-card">
+            <img src="../hahaha/images/pak-agus.png">
+
+            <div class="guru-info">
+                <h3>Budi Santoso, S.T.</h3>
+                <div class="jabatan">Guru Telekomunikasi</div>
+                <p>
+                    Mengajarkan teknologi telekomunikasi, fiber optik,
+                    media transmisi dan komunikasi data.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="guru-card">
+            <img src="../hahaha/images/Muchamad-Anton-Irawan-Sardi-S.T.png">
+
+            <div class="guru-info">
+                <h3>Dewi Lestari, S.Kom.</h3>
+                <div class="jabatan">Guru Keamanan Jaringan</div>
+                <p>
+                    Membimbing siswa memahami konsep keamanan jaringan,
+                    firewall dan perlindungan sistem.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="guru-card">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg">
+
+            <div class="guru-info">
+                <h3>Rizky Pratama, S.Kom.</h3>
+                <div class="jabatan">Guru Teknologi Jaringan</div>
+                <p>
+                    Mengajarkan konfigurasi jaringan, wireless,
+                    perangkat jaringan dan teknologi terbaru.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="guru-card">
+            <img src="https://randomuser.me/api/portraits/women/33.jpg">
+
+            <div class="guru-info">
+                <h3>Nur Aisyah, S.Kom.</h3>
+                <div class="jabatan">Guru Produktif TJKT</div>
+                <p>
+                    Membimbing praktik siswa dalam perakitan komputer,
+                    instalasi dan troubleshooting.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- KOMPETENSI -->
+<section class="kompetensi" id="kompetensi">
+
+    <div class="title">
+        <h2>Kompetensi TJKT</h2>
+        <p>Keahlian yang dikembangkan oleh siswa</p>
+    </div>
+
+    <div class="skill-container">
+
+        <div class="skill">
+            <div class="icon">🖥️</div>
+            <h3>Komputer</h3>
+            <p>Perakitan, instalasi dan troubleshooting komputer.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">🌐</div>
+            <h3>Jaringan</h3>
+            <p>Instalasi dan konfigurasi jaringan komputer.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">🗄️</div>
+            <h3>Server</h3>
+            <p>Administrasi sistem dan layanan server.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">📡</div>
+            <h3>Wireless</h3>
+            <p>Konfigurasi jaringan nirkabel dan access point.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">🔒</div>
+            <h3>Security</h3>
+            <p>Dasar keamanan dan perlindungan jaringan.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">💡</div>
+            <h3>Fiber Optik</h3>
+            <p>Mengenal media transmisi fiber optik.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">⚙️</div>
+            <h3>Router</h3>
+            <p>Konfigurasi perangkat jaringan dan routing.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">📱</div>
+            <h3>Telekomunikasi</h3>
+            <p>Mempelajari komunikasi data dan telekomunikasi.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- MATERI -->
+<section id="materi">
+
+    <div class="title">
+        <h2>Materi Pembelajaran</h2>
+        <p>Beberapa materi yang dipelajari di jurusan TJKT</p>
+    </div>
+
+    <div class="materi-container">
+
+        <div class="materi">
+            <h3>🔌 Dasar Jaringan</h3>
+            <p>
+                Pengenalan LAN, WAN, topologi jaringan,
+                IP Address dan perangkat jaringan.
+            </p>
+        </div>
+
+        <div class="materi">
+            <h3>🖥️ Sistem Operasi</h3>
+            <p>
+                Instalasi dan konfigurasi sistem operasi
+                komputer maupun server.
+            </p>
+        </div>
+
+        <div class="materi">
+            <h3>🌐 TCP/IP</h3>
+            <p>
+                Mempelajari protokol jaringan,
+                IP Address, subnetting dan komunikasi data.
+            </p>
+        </div>
+
+        <div class="materi">
+            <h3>📡 Wireless</h3>
+            <p>
+                Pengenalan Wi-Fi, access point,
+                keamanan wireless dan konfigurasi jaringan.
+            </p>
+        </div>
+
+        <div class="materi">
+            <h3>💡 Fiber Optik</h3>
+            <p>
+                Mengenal kabel fiber optik,
+                media transmisi dan dasar instalasinya.
+            </p>
+        </div>
+
+        <div class="materi">
+            <h3>🔐 Keamanan Jaringan</h3>
+            <p>
+                Dasar firewall, keamanan sistem,
+                autentikasi dan perlindungan jaringan.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- KEGIATAN -->
+<section class="kegiatan" id="kegiatan">
+
+    <div class="title">
+        <h2>Kegiatan & Proyek TJKT</h2>
+        <p>Contoh kegiatan praktik siswa</p>
+    </div>
+
+    <div class="project-container">
+
+        <div class="project">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80">
+
+            <div class="project-content">
+                <h3>Perakitan Komputer</h3>
+                <p>
+                    Siswa melakukan praktik pemasangan komponen
+                    komputer dan pengujian perangkat.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="project">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80">
+
+            <div class="project-content">
+                <h3>Praktik Jaringan</h3>
+                <p>
+                    Membuat jaringan LAN dan melakukan konfigurasi
+                    perangkat jaringan.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="project">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80">
+
+            <div class="project-content">
+                <h3>Project Server</h3>
+                <p>
+                    Siswa mempraktikkan instalasi dan konfigurasi
+                    layanan server jaringan.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- DATA PERALATAN -->
+<section class="data-peralatan" id="data-peralatan">
+
+    <div class="title">
+        <h2>Data Peralatan</h2>
+        <p>Informasi data peralatan dan bahan ajar</p>
+        <a href="index.php" class="btn">Lihat Data Alat</a>
+    </div>
+</section>
+
+
+<!-- KONTAK -->
+<section id="kontak">
+
+    <div class="title">
+        <h2>Kontak Jurusan</h2>
+        <p>Informasi dan kontak Jurusan TJKT</p>
+    </div>
+
+    <div class="contact">
+
+        <div class="contact-box">
+
+            <h3>Jurusan TJKT</h3>
+
+            <p>🏫 SMKN 1 NAJA</p>
+            <p>📍 Jl. Pasukan Sindangkasih No.155 Maja Selatan - Maja Kab. Majalengka</p>
+            <p>📧 tjkt@smkn1naja.sch.id</p>
+            <p>📞 0233-282480</p>
+
+            <br>
+
+            <a href="#home" class="btn">Kembali ke Atas</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    <p>
+        © 2026 <span>Jurusan TJKT</span> |
+        Portofolio Teknik Jaringan Komputer dan Telekomunikasi
+    </p>
+</footer>
+
+
+</body>
+</html>
