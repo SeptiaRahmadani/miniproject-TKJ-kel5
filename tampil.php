@@ -1,8 +1,8 @@
 <?php
 include "koneksi.php";
-$query = "SELECT * FROM data_alat";
-$hasil = mysqli_query($koneksi, $query);
-$data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
+$query_alat = "SELECT * FROM data_alat";
+$hasil = mysqli_query($koneksi, $query_alat);
+$data_alat = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>

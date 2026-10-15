@@ -1,23 +1,18 @@
 <?php
 // 1. Sertakan file koneksi ke database
 include "koneksi.php";
- HEAD
-
-// 2. Query Data Alat dari Database
 $query_alat = "SELECT * FROM data_alat ORDER BY id DESC";
 $hasil_alat = mysqli_query($koneksi, $query_alat);
 $data_alat  = mysqli_fetch_all($hasil_alat, MYSQLI_ASSOC);
 
 // 3. Hitung Ringkasan Statistik
 $total_jenis_alat = count($data_alat);
-
 $query_alat = "SELECT * FROM data_alat";
 $hasil = mysqli_query($koneksi, $query_alat);
 $data_alat = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
 
- d341402889e48e9844f70a9875ccf3a5bfd19e4f
 ?>
-<?php
+<?php 
 include "koneksi.php";
 $query_siswa = "SELECT * FROM data_siswa";
 $hasil = mysqli_query($koneksi, $query_siswa);
@@ -103,6 +98,7 @@ $data_siswa = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
     <!-- Icon Tambahan (Opsional) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
+</body>
 <body>
 
 
@@ -171,16 +167,16 @@ $data_siswa = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <body>
                             <?php foreach ($data_siswa as $row): ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($row['id'] ?? ''); ?></td>
                                 <td><?php echo htmlspecialchars($row['nama_siswa'] ?? ''); ?></td>
                                 <td><?php echo htmlspecialchars($row['kelas'] ?? ''); ?></td>
                                 <td><?php echo htmlspecialchars($row['JK'] ?? ''); ?></td>
-                                <td><?php echo htmlspecialchars($row['No_Hp'] ?? ''); ?></td>
+                                <td><?php echo htmlspecialchars($row['No_hp'] ?? ''); ?></td>
                                 <td class="text-center">
-                                    <a href="update.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm me-1">Update</a>
+                                    <a href="update_siswa.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm me-1">Update</a>
                                     <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Delete</a>
                                 </td>
                             </tr>  
