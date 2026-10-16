@@ -58,6 +58,26 @@
         .contact-box p { margin: 15px 0; color: var(--text-light); }
         footer { background: #03070d; color: #8da4c4; text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
         footer span { color: var(--primary); font-weight: 700; }
+        @media (max-width: 900px) {
+            nav { padding: 0 20px; }
+            nav ul { gap: 14px; }
+            .about { grid-template-columns: 1fr; gap: 30px; }
+            .guru-container, .materi-container, .project-container { grid-template-columns: repeat(2, 1fr); }
+            .skill-container { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 44px; }
+        }
+        @media (max-width: 600px) {
+            nav { height: auto; min-height: 80px; padding: 12px 18px; align-items: flex-start; flex-direction: column; }
+            nav ul { width: 100%; flex-wrap: wrap; gap: 8px 14px; }
+            nav ul li a { font-size: 12px; }
+            section { padding: 110px 6% 70px; }
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 16px; }
+            .title h2 { font-size: 30px; }
+            .guru-container, .materi-container, .project-container, .skill-container { grid-template-columns: 1fr; }
+            .about-text, .contact-box { padding: 28px 22px; }
+            .data-peralatan { padding: 40px 22px; }
+        }
     </style>
 </head>
 <body>
@@ -69,8 +89,6 @@
             <li><a href="#about">Tentang</a></li>
             <li><a href="#guru">Guru</a></li>
             <li><a href="#kompetensi">Kompetensi</a></li>
-            <li><a href="#materi">Materi</a></li>
-            <li><a href="#kegiatan">Kegiatan</a></li>
             <li><a href="#data-peminjaman">Inventaris</a></li>
             <li><a href="#kontak">Kontak</a></li>
         </ul>
@@ -141,7 +159,7 @@
     <div class="contact">
         <div class="contact-box">
             <h3>Teknik Jaringan Komputer & Telekomunikasi</h3>
-            <p>🏫 <strong>SMKN 1 NAJA</strong></p>
+            <p>🏫 <strong>SMKN 1 MAJA</strong></p>
             <p>📍 Jl. Pasukan Sindangkasih No.155 Maja Selatan - Maja Kab. Majalengka</p>
             <p>📧 tjkt@smkn1maja.sch.id | 📞 0233-282480</p>
             <br>

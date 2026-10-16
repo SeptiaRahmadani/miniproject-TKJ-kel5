@@ -70,9 +70,10 @@ $total_jenis_alat = count($data_alat);
                             <td class="text-center text-nowrap">
                                 <!-- Tombol update & delete tetap pakai ID asli dari database -->
                                 <a href="update.php?id=<?php echo urlencode($row['id']); ?>" class="btn btn-warning btn-sm">Update</a>
-                                <a href="delete.php?id=<?php echo urlencode($row['id']); ?>"
-                                   class="btn btn-danger btn-sm"
-                                   onclick="return confirm('Yakin ingin menghapus data alat ini?');">Delete</a>
+                                <form class="d-inline" action="delete.php" method="post" onsubmit="return confirm('Yakin ingin menghapus data alat ini?');">
+                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars((string) $row['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
                             </td>
                         </tr>
                         <?php endforeach; ?>

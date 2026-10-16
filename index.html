@@ -68,6 +68,7 @@
 
         /* SHARED SECTION BACKGROUND */
         section {
+            padding: 90px 8%;
             background:
                 linear-gradient(rgba(4, 15, 35, .85), rgba(4, 15, 35, .9)),
                 url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80");
@@ -117,11 +118,6 @@
         .btn:hover {
             transform: translateY(-3px);
             background: white;
-        }
-
-        /* GENERAL */
-        section {
-            padding: 90px 8%;
         }
 
         .title {
@@ -352,6 +348,7 @@
             }
 
             .guru-container,
+            .materi-container,
             .project-container {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -370,12 +367,29 @@
         }
 
         @media(max-width: 600px) {
+            nav {
+                height: auto;
+                min-height: 70px;
+                padding: 12px 18px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
             nav ul {
-                display: none;
+                flex-wrap: wrap;
+                gap: 8px 12px;
+            }
+
+            nav ul li a {
+                font-size: 12px;
             }
 
             .hero h1 {
                 font-size: 35px;
+            }
+
+            .hero {
+                padding-top: 145px;
             }
 
             .hero p {
@@ -383,6 +397,7 @@
             }
 
             .guru-container,
+            .materi-container,
             .project-container,
             .skill-container {
                 grid-template-columns: 1fr;
@@ -408,7 +423,7 @@
             <li><a href="#kompetensi">Kompetensi</a></li>
             <li><a href="#materi">Materi</a></li>
             <li><a href="#kegiatan">Kegiatan</a></li>
-            <li><a href="#data-peminjaman">Data Peminjaman</a></li>
+            <li><a href="#data-peralatan">Data Peralatan</a></li>
             <li><a href="#kontak">Kontak</a></li>
         </ul>
     </nav>
@@ -418,7 +433,7 @@
 <!-- HOME -->
 <section class="hero" id="home">
     <div class="hero-content">
-        <h1>SELAMAT DATANG DI<span>JURUSAN TJKT</span></h1>
+        <h1>SELAMAT DATANG DI <span>JURUSAN TJKT</span></h1>
 
         <p>
             Teknik Jaringan Komputer dan Telekomunikasi merupakan bidang
@@ -484,7 +499,7 @@
         <div class="guru-card">
 
 
-            <img src="../miniproject-TKJ-kel5/miniproject-TKJ-kel5/Guntur-Irfan-Haerudin-S.Kom.png">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="Guru jaringan komputer">
 
 
             <div class="guru-info">
@@ -501,7 +516,7 @@
         <div class="guru-card">
 
 
-            <img src="../miniproject-TKJ-kel5/miniproject-TKJ-kel5/Nurwati-S.Kom.png">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Guru administrasi sistem">
 
             <div class="guru-info">
                 <h3>Siti Rahma, S.Kom.</h3>
@@ -517,7 +532,7 @@
         <div class="guru-card">
 
 
-            <img src="../miniproject-TKJ-kel5/miniproject-TKJ-kel5/pak-agus.png">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Guru telekomunikasi">
 
             <div class="guru-info">
                 <h3>Budi Santoso, S.T.</h3>
@@ -532,7 +547,7 @@
 
         <div class="guru-card">
 
-            <img src="../miniproject-TKJ-kel5/miniproject-TKJ-kel5/Muchamad-Anton-Irawan-Sardi-S.T.png">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" alt="Guru keamanan jaringan">
 
 
             <div class="guru-info">
@@ -549,7 +564,7 @@
         <div class="guru-card">
 
 
-            <img src="../miniproject-TKJ-kel5/miniproject-TKJ-kel5/Maman, S.T.png">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" alt="Guru teknologi jaringan">
 
 
             <div class="guru-info">
@@ -564,7 +579,7 @@
 
 
         <div class="guru-card">
-            <img src="../miniproject-TKJ-kel5/miniproject-TKJ-kel5/Maman Tarkiman S.T.png ">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="Guru produktif TJKT">
 
 
             <div class="guru-info">
