@@ -1,5 +1,7 @@
 <?php
 include "koneksi.php";
+require_once "auth.php";
+auth_wajib_peran('guru');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: index.php");

@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Jurusan TJKT</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 20, 40, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00d9ff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: .3s;
+        }
+
+        nav ul li a:hover {
+            color: #00d9ff;
+        }
+
+        /* SHARED SECTION BACKGROUND */
+        section {
+            padding: 90px 8%;
+            background:
+                linear-gradient(rgba(4, 15, 35, .85), rgba(4, 15, 35, .9)),
+                url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 10%;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #00d9ff;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: #dce8f5;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 8px;
+            background: #00c9f5;
+            color: #061426;
+            text-decoration: none;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: white;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title h2 {
+            font-size: 35px;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .title p {
+            color: #dce8f5;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: auto;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.15);
+        }
+
+        .about-text h3 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: #dce8f5;
+            margin-bottom: 15px;
+        }
+
+        /* GURU */
+        .guru-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .guru-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+            transition: .3s;
+        }
+
+        .guru-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .guru-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .guru-info {
+            padding: 22px;
+        }
+
+        .guru-info h3 {
+            margin-bottom: 7px;
+        }
+
+        .guru-info .jabatan {
+            color: #00a8d0;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .guru-info p {
+            color: #68758a;
+            line-height: 1.6;
+        }
+
+        /* KOMPETENSI */
+        .kompetensi {
+            color: white;
+        }
+
+        .skill-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill {
+            background: #142744;
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .skill:hover {
+            background: #00a8d0;
+            transform: translateY(-5px);
+        }
+
+        .skill .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .skill h3 {
+            margin-bottom: 10px;
+        }
+
+        .skill p {
+            color: #cbd7e7;
+            line-height: 1.5;
+        }
+
+        /* MATERI */
+        .materi-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .materi {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #00bce4;
+            box-shadow: 0 8px 25px rgba(0,0,0,.07);
+        }
+
+        .materi h3 {
+            margin-bottom: 12px;
+        }
+
+        .materi p {
+            color: #68758a;
+            line-height: 1.6;
+        }
+
+        /* KEGIATAN */
+        .project-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,.08);
+        }
+
+        .project img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 22px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: #68758a;
+            line-height: 1.6;
+        }
+
+        /* KONTAK */
+        .contact {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-box {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+        }
+
+        .contact-box p {
+            margin: 12px 0;
+            color: #596579;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #071225;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer span {
+            color: #00d9ff;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 900px) {
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .guru-container,
+            .materi-container,
+            .project-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skill-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+        }
+
+        @media(max-width: 600px) {
+            nav {
+                height: auto;
+                min-height: 70px;
+                padding: 12px 18px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 8px 12px;
+            }
+
+            nav ul li a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero {
+                padding-top: 145px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .guru-container,
+            .materi-container,
+            .project-container,
+            .skill-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 6%;
+            }
+        }
+
+        :root {
+            --page-bg: #f4f7f6;
+            --surface: #ffffff;
+            --surface-soft: #edf4f1;
+            --text: #243331;
+            --muted: #657772;
+            --teal: #16877d;
+            --teal-dark: #116d65;
+            --line: #dfe8e5;
+            --shadow: 0 12px 32px rgba(24, 59, 58, 0.09);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 110px;
+        }
+
+        body {
+            background: var(--page-bg);
+            color: var(--text);
+            font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.65;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(223, 232, 229, 0.9);
+            box-shadow: 0 4px 18px rgba(24, 59, 58, 0.06);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        nav {
+            min-height: 72px;
+        }
+
+        .logo {
+            color: var(--text);
+            letter-spacing: 0.04em;
+        }
+
+        .logo span {
+            color: var(--teal);
+        }
+
+        nav ul li a {
+            position: relative;
+            padding: 8px 0;
+            color: #52645f;
+            font-size: 0.84rem;
+            font-weight: 600;
+            transition: color 180ms ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus-visible {
+            color: var(--teal);
+        }
+
+        nav ul li a::after {
+            position: absolute;
+            right: 0;
+            bottom: 2px;
+            left: 0;
+            height: 2px;
+            background: var(--teal);
+            border-radius: 2px;
+            content: "";
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 180ms ease;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a:focus-visible::after {
+            transform: scaleX(1);
+        }
+
+        nav ul li a.app-link {
+            padding: 7px 9px;
+            color: var(--teal-dark);
+            background: #edf6f3;
+            border: 1px solid #d7eae4;
+            border-radius: 8px;
+        }
+
+        nav ul li a.app-link::after {
+            display: none;
+        }
+
+        nav ul li a.app-link:hover,
+        nav ul li a.app-link:focus-visible {
+            color: #fff;
+            background: var(--teal);
+            border-color: var(--teal);
+        }
+
+        section {
+            padding: clamp(72px, 9vw, 112px) max(6%, calc((100% - 1200px) / 2));
+            color: var(--text);
+            background: var(--surface);
+        }
+
+        section:not(.hero):nth-of-type(even) {
+            background: var(--surface-soft);
+        }
+
+        section[id] {
+            scroll-margin-top: 110px;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding: 130px 10% 100px;
+            overflow: hidden;
+            color: #fff;
+            background:
+                linear-gradient(105deg, rgba(14, 50, 48, 0.92), rgba(19, 90, 81, 0.74)),
+                url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80");
+            background-position: center;
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 760px;
+            animation: hero-enter 650ms ease both;
+        }
+
+        .hero h1 {
+            max-width: 720px;
+            font-size: clamp(2.4rem, 6vw, 4.4rem);
+            line-height: 1.12;
+            letter-spacing: -0.035em;
+        }
+
+        .hero h1 span {
+            color: #9ce4d5;
+        }
+
+        .hero p {
+            max-width: 680px;
+            color: #e0efeb;
+        }
+
+        .btn {
+            padding: 13px 22px;
+            color: #fff;
+            background: var(--teal);
+            border: 1px solid var(--teal);
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(9, 54, 49, 0.18);
+            transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .btn:hover {
+            color: #fff;
+            background: var(--teal-dark);
+            box-shadow: 0 10px 22px rgba(9, 54, 49, 0.22);
+            transform: translateY(-2px);
+        }
+
+        .title {
+            margin-bottom: 42px;
+        }
+
+        .title h2 {
+            color: var(--text);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            letter-spacing: -0.025em;
+        }
+
+        .title p,
+        .about-text p {
+            color: var(--muted);
+        }
+
+        .about {
+            gap: clamp(28px, 5vw, 58px);
+        }
+
+        .about img {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-text h3 {
+            color: var(--text);
+        }
+
+        .guru-card,
+        .skill,
+        .materi,
+        .project,
+        .contact-box {
+            color: var(--text);
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(24, 59, 58, 0.06);
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+        }
+
+        .guru-card:hover,
+        .skill:hover,
+        .materi:hover,
+        .project:hover {
+            border-color: #b8d3cc;
+            box-shadow: var(--shadow);
+            transform: translateY(-4px);
+        }
+
+        .guru-info h3 {
+            color: var(--text);
+        }
+
+        .guru-info .jabatan {
+            color: var(--teal-dark);
+        }
+
+        .guru-info p,
+        .materi p,
+        .project-content p,
+        .contact-box p {
+            color: var(--muted);
+        }
+
+        .guru-card img,
+        .project img {
+            background: var(--surface-soft);
+        }
+
+        .guru-card img {
+            display: block;
+            width: 100%;
+            height: 320px;
+            object-fit: contain;
+            object-position: center;
+            background: #edf2ef;
+        }
+
+        .kompetensi {
+            color: #fff;
+            background: #183b3a !important;
+        }
+
+        .kompetensi .title h2 {
+            color: #fff;
+        }
+
+        .kompetensi .title p {
+            color: #c7dbd5;
+        }
+
+        .skill {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.13);
+            box-shadow: none;
+        }
+
+        .skill:hover {
+            color: #fff;
+            background: #245955;
+            border-color: rgba(156, 228, 213, 0.55);
+        }
+
+        .skill p {
+            color: #d0e1dc;
+        }
+
+        .skill .icon {
+            font-size: 2.5rem;
+        }
+
+        .materi {
+            border-left: 3px solid var(--teal);
+        }
+
+        .project {
+            overflow: hidden;
+        }
+
+        .contact-box {
+            padding: clamp(24px, 5vw, 38px);
+        }
+
+        footer {
+            padding: 26px 18px;
+            color: #d6e5e0;
+            background: #183b3a;
+        }
+
+        footer span {
+            color: #9ce4d5;
+        }
+
+        :focus-visible {
+            outline: 3px solid #69b9aa;
+            outline-offset: 4px;
+        }
+
+        @keyframes hero-enter {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1180px) {
+            nav {
+                height: auto;
+                min-height: 72px;
+                flex-direction: column;
+                justify-content: center;
+                padding: 8px 18px;
+                gap: 4px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 4px 14px;
+            }
+
+            .guru-container,
+            .materi-container,
+            .project-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                gap: 4px 10px;
+            }
+
+            nav ul li a {
+                font-size: 0.76rem;
+            }
+
+            .hero {
+                min-height: 90vh;
+                padding: 160px 7% 90px;
+            }
+
+            .guru-container,
+            .materi-container,
+            .project-container,
+            .skill-container {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">TJKT<span>.</span></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#guru">Guru</a></li>
+            <li><a href="#kompetensi">Kompetensi</a></li>
+            <li><a href="#materi">Materi</a></li>
+            <li><a href="#kegiatan">Kegiatan</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- HOME -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>SELAMAT DATANG DI <span>JURUSAN TJKT</span></h1>
+
+        <p>
+            Teknik Jaringan Komputer dan Telekomunikasi merupakan bidang
+            keahlian yang mempelajari komputer, jaringan, server,
+            telekomunikasi, keamanan jaringan, serta teknologi informasi.
+        </p>
+
+        <a href="#about" class="btn">Jelajahi website</a>
+    </div>
+</section>
+
+
+<!-- TENTANG -->
+<section id="about">
+
+    <div class="title">
+        <h2>Tentang Jurusan TJKT</h2>
+        <p>Mengenal lebih dekat Teknik Jaringan Komputer dan Telekomunikasi</p>
+    </div>
+
+    <div class="about">
+
+        <img
+            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80"
+            alt="Jaringan Komputer">
+
+        <div class="about-text">
+
+            <h3>Teknik Jaringan Komputer dan Telekomunikasi</h3>
+
+            <p>
+                TJKT adalah jurusan yang mempelajari berbagai teknologi
+                jaringan komputer dan telekomunikasi.
+            </p>
+
+            <p>
+                Siswa mempelajari perakitan komputer, instalasi sistem
+                operasi, konfigurasi jaringan, server, perangkat jaringan,
+                keamanan jaringan, fiber optik, dan teknologi komunikasi.
+            </p>
+
+            <p>
+                Pembelajaran TJKT menggabungkan teori dan praktik sehingga
+                siswa dapat mengembangkan keterampilan teknis dan kemampuan
+                pemecahan masalah.
+            </p>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- GURU -->
+<section id="guru">
+
+    <div class="title">
+        <h2>Guru Jurusan TJKT</h2>
+        <p>Tim pengajar yang membimbing siswa dalam pembelajaran TJKT</p>
+    </div>
+
+    <div class="guru-container">
+
+        <div class="guru-card">
+
+
+            <img src="fotoguru/muchamad_anton.png" alt="Muchamad Anton Irawan Sardi">
+
+
+            <div class="guru-info">
+                <h3>Muchamad Anton Irawan Sardi, S.T.</h3>
+                <div class="jabatan">Kepala Program TKJ</div>
+                <p>
+                    Mengajar jaringan komputer, routing, switching,
+                    konfigurasi perangkat jaringan dan troubleshooting.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="guru-card">
+
+
+            <img src="fotoguru/Agus_Santosa.png" alt="Agus Santosa">
+
+            <div class="guru-info">
+                <h3>Agus Santosa, S.T., M.T.</h3>
+                <div class="jabatan">Guru Produktif TKJ</div>
+                <p>
+                    Mengajarkan sistem operasi, server, administrasi
+                    sistem dan layanan jaringan.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="guru-card">
+
+
+            <img src="fotoguru/Guntur_Irfan.png" alt="Guntur Irfan Haerudin">
+
+            <div class="guru-info">
+                <h3>Guntur Irfan Haerudin, S.Kom.</h3>
+                <div class="jabatan">Guru Produktif TKJ</div>
+                <p>
+                    Mengajarkan teknologi telekomunikasi, fiber optik,
+                    media transmisi dan komunikasi data.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="guru-card">
+
+            <img src="fotoguru/maman_s.png" alt="Maman">
+
+
+            <div class="guru-info">
+                <h3>Maman, S.T.</h3>
+                <div class="jabatan">Guru Produktif TKJ</div>
+                <p>
+                    Membimbing siswa memahami konsep keamanan jaringan,
+                    firewall dan perlindungan sistem.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="guru-card">
+
+
+            <img src="fotoguru/maman_t.png" alt="Maman Tarkiman">
+
+
+            <div class="guru-info">
+                <h3>Maman Tarkiman, S.T.</h3>
+                <div class="jabatan">Guru Produktif TKJ</div>
+                <p>
+                    Mengajarkan konfigurasi jaringan, wireless,
+                    perangkat jaringan dan teknologi terbaru.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="guru-card">
+            <img src="fotoguru/Nurwati.png" alt="Nurwati">
+
+
+            <div class="guru-info">
+                <h3>Nurwati, S.Kom.</h3>
+                <div class="jabatan">Guru Produktif TKJ</div>
+                <p>
+                    Membimbing praktik siswa dalam perakitan komputer,
+                    instalasi dan troubleshooting.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- KOMPETENSI -->
+<section class="kompetensi" id="kompetensi">
+
+    <div class="title">
+        <h2>Kompetensi TJKT</h2>
+        <p>Keahlian yang dikembangkan oleh siswa</p>
+    </div>
+
+    <div class="skill-container">
+
+        <div class="skill">
+            <div class="icon">🖥️</div>
+            <h3>Komputer</h3>
+            <p>Perakitan, instalasi dan troubleshooting komputer.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">🌐</div>
+            <h3>Jaringan</h3>
+            <p>Instalasi dan konfigurasi jaringan komputer.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">🗄️</div>
+            <h3>Server</h3>
+            <p>Administrasi sistem dan layanan server.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">📡</div>
+            <h3>Wireless</h3>
+            <p>Konfigurasi jaringan nirkabel dan access point.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">🔒</div>
+            <h3>Security</h3>
+            <p>Dasar keamanan dan perlindungan jaringan.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">💡</div>
+            <h3>Fiber Optik</h3>
+            <p>Mengenal media transmisi fiber optik.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">⚙️</div>
+            <h3>Router</h3>
+            <p>Konfigurasi perangkat jaringan dan routing.</p>
+        </div>
+
+        <div class="skill">
+            <div class="icon">📱</div>
+            <h3>Telekomunikasi</h3>
+            <p>Mempelajari komunikasi data dan telekomunikasi.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- MATERI -->
+<section id="materi">
+
+    <div class="title">
+        <h2>Materi Pembelajaran</h2>
+        <p>Beberapa materi yang dipelajari di jurusan TJKT</p>
+    </div>
+
+    <div class="materi-container">
+
+        <div class="materi">
+            <h3>🔌 Dasar Jaringan</h3>
+            <p>
+                Pengenalan LAN, WAN, topologi jaringan,
+                IP Address dan perangkat jaringan.
+            </p>
+        </div>
+
+        <div class="materi">
+            <h3>🖥️ Sistem Operasi</h3>
+            <p>
+                Instalasi dan konfigurasi sistem operasi
+                komputer maupun server.
+            </p>
+        </div>
+
+        <div class="materi">
+            <h3>🌐 TCP/IP</h3>
+            <p>
+                Mempelajari protokol jaringan,
+                IP Address, subnetting dan komunikasi data.
+            </p>
+        </div>
+
+        <div class="materi">
+            <h3>📡 Wireless</h3>
+            <p>
+                Pengenalan Wi-Fi, access point,
+                keamanan wireless dan konfigurasi jaringan.
+            </p>
+        </div>
+
+        <div class="materi">
+            <h3>💡 Fiber Optik</h3>
+            <p>
+                Mengenal kabel fiber optik,
+                media transmisi dan dasar instalasinya.
+            </p>
+        </div>
+
+        <div class="materi">
+            <h3>🔐 Keamanan Jaringan</h3>
+            <p>
+                Dasar firewall, keamanan sistem,
+                autentikasi dan perlindungan jaringan.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- KEGIATAN -->
+<section class="kegiatan" id="kegiatan">
+
+    <div class="title">
+        <h2>Kegiatan & Proyek TJKT</h2>
+        <p>Contoh kegiatan praktik siswa</p>
+    </div>
+
+    <div class="project-container">
+
+        <div class="project">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80">
+
+            <div class="project-content">
+                <h3>Perakitan Komputer</h3>
+                <p>
+                    Siswa melakukan praktik pemasangan komponen
+                    komputer dan pengujian perangkat.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="project">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80">
+
+            <div class="project-content">
+                <h3>Praktik Jaringan</h3>
+                <p>
+                    Membuat jaringan LAN dan melakukan konfigurasi
+                    perangkat jaringan.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="project">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80">
+
+            <div class="project-content">
+                <h3>Project Server</h3>
+                <p>
+                    Siswa mempraktikkan instalasi dan konfigurasi
+                    layanan server jaringan.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- DATA PERALATAN -->
+<section class="data-peralatan" id="data-peralatan">
+
+    <div class="title">
+        <h2>Data Peralatan</h2>
+        <p>Informasi data peralatan dan bahan ajar</p>
+        <a href="index.html" class="btn">Pilih akses</a>
+    </div>
+</section>
+
+<!--DATA SISWA-->
+<section class="data-siswa" id="data-siswa">
+
+    <div class="title">
+        <h2>Data Siswa</h2>
+        <p>Informasi data siswa</p>
+        <a href="index.html" class="btn">Pilih akses</a>
+    </div>
+
+</section>
+
+<!-- DATA PEMINJAMAN -->
+<section class="data-peminjaman" id="data-peminjaman">
+
+    <div class="title">
+        <h2>Data Peminjaman</h2>
+        <p>Informasi dan pengelolaan peminjaman alat praktik</p>
+        <a href="index.html" class="btn">Pilih akses</a>
+    </div>
+
+</section>
+
+<!-- KONTAK -->
+<section id="kontak">
+
+    <div class="title">
+        <h2>Kontak Jurusan</h2>
+        <p>Informasi dan kontak Jurusan TJKT</p>
+    </div>
+
+    <div class="contact">
+
+        <div class="contact-box">
+
+            <h3>Jurusan TJKT</h3>
+
+            <p>🏫 SMKN 1 MAJA</p>
+            <p>📍 Jl. Pasukan Sindangkasih No.155 Maja Selatan - Maja Kab. Majalengka</p>
+            <p>📧 tjkt@smkn1maja.sch.id</p>
+            <p>📞 0233-282480</p>
+
+            <br>
+
+            <a href="#home" class="btn">Kembali ke Atas</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    <p>
+        © 2026 <span>Jurusan TJKT</span> |
+        Portofolio Teknik Jaringan Komputer dan Telekomunikasi
+    </p>
+</footer>
+
+
+</body>
+</html>

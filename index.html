@@ -3,790 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Jurusan TJKT</title>
-
+    <meta name="theme-color" content="#123c38">
+    <title>Pilih Akses | Portal TJKT</title>
     <style>
+        :root {
+            color-scheme: light;
+            --ink: #173b37;
+            --muted: #617873;
+            --teal: #16877d;
+            --line: #dce9e5;
+        }
+
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
-            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
-            background: #f4f7fb;
-            color: #172033;
-        }
-
-        /* NAVBAR */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(10, 20, 40, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: auto;
-            height: 70px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 25px;
-        }
-
-        .logo {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .logo span {
-            color: #00d9ff;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-            transition: .3s;
-        }
-
-        nav ul li a:hover {
-            color: #00d9ff;
-        }
-
-        /* SHARED SECTION BACKGROUND */
-        section {
-            padding: 90px 8%;
-            background:
-                linear-gradient(rgba(4, 15, 35, .85), rgba(4, 15, 35, .9)),
-                url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80");
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-
-        .hero {
+            display: grid;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 100px 10%;
+            margin: 0;
+            padding: 32px 20px;
+            place-items: center;
+            color: var(--ink);
+            background:
+                radial-gradient(ellipse at 15% 15%, rgba(116, 196, 171, 0.2), transparent 36%),
+                linear-gradient(135deg, #f4f8f6, #e8f2ee);
+            font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        .hero-content {
-            max-width: 750px;
+        main {
+            width: min(100%, 960px);
         }
 
-        .hero h1 {
-            font-size: 55px;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #00d9ff;
-        }
-
-        .hero p {
-            font-size: 19px;
-            line-height: 1.7;
-            margin-bottom: 30px;
-            color: #dce8f5;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 25px;
-            border-radius: 8px;
-            background: #00c9f5;
-            color: #061426;
-            text-decoration: none;
-            font-weight: bold;
-            transition: .3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            background: white;
-        }
-
-        .title {
+        .intro {
+            margin-bottom: 32px;
             text-align: center;
-            margin-bottom: 50px;
         }
 
-        .title h2 {
-            font-size: 35px;
-            color: white;
-            margin-bottom: 12px;
-        }
-
-        .title p {
-            color: #dce8f5;
-        }
-
-        /* ABOUT */
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            max-width: 1200px;
-            margin: auto;
+        .brand {
+            display: inline-flex;
             align-items: center;
-        }
-
-        .about img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,.15);
-        }
-
-        .about-text h3 {
-            font-size: 30px;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .about-text p {
-            line-height: 1.8;
-            color: #dce8f5;
-            margin-bottom: 15px;
-        }
-
-        /* GURU */
-        .guru-container {
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .guru-card {
-            background: white;
+            justify-content: center;
+            width: 58px;
+            height: 58px;
+            margin-bottom: 16px;
+            color: #fff;
+            background: linear-gradient(145deg, #208e7d, #155c56);
             border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,.08);
-            transition: .3s;
+            box-shadow: 0 10px 24px rgba(22, 104, 91, 0.2);
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
         }
 
-        .guru-card:hover {
-            transform: translateY(-8px);
+        .eyebrow {
+            margin: 0 0 8px;
+            color: var(--teal);
+            font-size: 0.76rem;
+            font-weight: 750;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
         }
 
-        .guru-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
+        h1 {
+            margin: 0;
+            font-size: clamp(1.9rem, 5vw, 2.8rem);
+            letter-spacing: -0.045em;
         }
 
-        .guru-info {
-            padding: 22px;
+        .intro > p:last-child {
+            max-width: 530px;
+            margin: 12px auto 0;
+            color: var(--muted);
+            line-height: 1.7;
         }
 
-        .guru-info h3 {
-            margin-bottom: 7px;
-        }
-
-        .guru-info .jabatan {
-            color: #00a8d0;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
-
-        .info-guru p {
-            color: #68758a;
-            line-height: 1.6;
-        }
-
-        /* KOMPETENSI */
-        .kompetensi {
-            color: white;
-        }
-
-        .skill-container {
-            max-width: 1200px;
-            margin: auto;
+        .choices {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 20px;
         }
 
-        .skill {
-            background: #142744;
-            padding: 30px 20px;
-            border-radius: 15px;
-            text-align: center;
-            transition: .3s;
-        }
-
-        .skill:hover {
-            background: #00a8d0;
-            transform: translateY(-5px);
-        }
-
-        .skill .icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        .skill h3 {
-            margin-bottom: 10px;
-        }
-
-        .skill p {
-            color: #cbd7e7;
-            line-height: 1.5;
-        }
-
-        /* MATERI */
-        .materi-container {
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .materi {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 5px solid #00bce4;
-            box-shadow: 0 8px 25px rgba(0,0,0,.07);
-        }
-
-        .materi h3 {
-            margin-bottom: 12px;
-        }
-
-        .materi p {
-            color: #68758a;
-            line-height: 1.6;
-        }
-
-        /* KEGIATAN */
-        .project-container {
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .project {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,.08);
-        }
-
-        .project img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .project-content {
-            padding: 22px;
-        }
-
-        .project-content h3 {
-            margin-bottom: 10px;
-        }
-
-        .project-content p {
-            color: #68758a;
-            line-height: 1.6;
-        }
-
-        /* KONTAK */
-        .contact {
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .contact-box {
-            background: white;
-            padding: 35px;
+        .choice {
+            display: flex;
+            min-height: 255px;
+            flex-direction: column;
+            padding: 28px;
+            color: inherit;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid var(--line);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+            box-shadow: 0 12px 36px rgba(26, 65, 57, 0.07);
+            text-decoration: none;
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
         }
 
-        .contact-box p {
-            margin: 12px 0;
-            color: #596579;
+        .choice:hover,
+        .choice:focus-visible {
+            border-color: #9fc9bd;
+            box-shadow: 0 18px 42px rgba(26, 65, 57, 0.13);
+            transform: translateY(-4px);
         }
 
-        /* FOOTER */
-        footer {
-            background: #071225;
-            color: white;
+        .choice:focus-visible,
+        .public-link:focus-visible {
+            outline: 3px solid #69b9aa;
+            outline-offset: 4px;
+        }
+
+        .icon {
+            display: grid;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 20px;
+            place-items: center;
+            background: #e9f5f0;
+            border-radius: 14px;
+            font-size: 1.5rem;
+        }
+
+        .choice h2 {
+            margin: 0 0 8px;
+            font-size: 1.35rem;
+        }
+
+        .choice p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 24px;
+            color: var(--teal);
+            font-size: 0.93rem;
+            font-weight: 750;
+        }
+
+        .arrow {
+            font-size: 1.25rem;
+            transition: transform 180ms ease;
+        }
+
+        .choice:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        .footer {
+            margin: 24px 0 0;
+            color: var(--muted);
+            font-size: 0.88rem;
             text-align: center;
-            padding: 30px;
         }
 
-        footer span {
-            color: #00d9ff;
+        .public-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 4px 8px;
+            color: #47716a;
+            font-size: 0.85rem;
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
 
-        /* RESPONSIVE */
-        @media(max-width: 900px) {
-            .about {
+        .register-link {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 11px 18px;
+            color: #fff;
+            background: var(--teal);
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 180ms ease, transform 180ms ease;
+        }
+
+        .register-link:hover {
+            color: #fff;
+            background: #116d65;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 620px) {
+            body {
+                padding: 28px 16px;
+            }
+
+            .intro {
+                margin-bottom: 24px;
+            }
+
+            .choices {
                 grid-template-columns: 1fr;
+                gap: 14px;
             }
 
-            .guru-container,
-            .materi-container,
-            .project-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .skill-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            nav ul {
-                gap: 12px;
+            .choice {
+                min-height: 220px;
+                padding: 24px;
             }
         }
 
-        @media(max-width: 600px) {
-            nav {
-                height: auto;
-                min-height: 70px;
-                padding: 12px 18px;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                gap: 8px 12px;
-            }
-
-            nav ul li a {
-                font-size: 12px;
-            }
-
-            .hero h1 {
-                font-size: 35px;
-            }
-
-            .hero {
-                padding-top: 145px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .guru-container,
-            .materi-container,
-            .project-container,
-            .skill-container {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 70px 6%;
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
-
 <body>
+    <main>
+        <header class="intro">
+            <div class="brand" aria-hidden="true">TJKT</div>
+            <p class="eyebrow">Portal Jurusan</p>
+            <h1>Selamat datang di TJKT</h1>
+            <p>Pilih jenis akun untuk melanjutkan ke halaman yang sesuai.</p>
+        </header>
 
-<header>
-    <nav>
-        <div class="logo">TJKT<span>.</span></div>
+        <section class="choices" aria-label="Pilih jenis akun">
+            <a class="choice" href="login.php?role=siswa">
+                <span class="icon" aria-hidden="true">🎓</span>
+                <h2>Siswa</h2>
+                <p>Masuk untuk melihat data peminjaman yang terhubung dengan akunmu.</p>
+                <span class="action">Masuk sebagai siswa <span class="arrow" aria-hidden="true">→</span></span>
+            </a>
+            <a class="choice" href="login.php?role=guru">
+                <span class="icon" aria-hidden="true">👩‍🏫</span>
+                <h2>Guru</h2>
+                <p>Masuk untuk melihat peminjam dan mengelola data peminjaman, siswa, serta alat.</p>
+                <span class="action">Masuk sebagai guru <span class="arrow" aria-hidden="true">→</span></span>
+            </a>
+        </section>
 
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">Tentang</a></li>
-            <li><a href="#guru">Guru</a></li>
-            <li><a href="#kompetensi">Kompetensi</a></li>
-            <li><a href="#materi">Materi</a></li>
-            <li><a href="#kegiatan">Kegiatan</a></li>
-            <li><a href="#data-peralatan">Data Peminjaman</a></li>
-            <li><a href="#kontak">Kontak</a></li>
-        </ul>
-    </nav>
-</header>
-
-
-<!-- HOME -->
-<section class="hero" id="home">
-    <div class="hero-content">
-        <h1>SELAMAT DATANG DI <span>JURUSAN TJKT</span></h1>
-
-        <p>
-            Teknik Jaringan Komputer dan Telekomunikasi merupakan bidang
-            keahlian yang mempelajari komputer, jaringan, server,
-            telekomunikasi, keamanan jaringan, serta teknologi informasi.
-        </p>
-
-        <a href="#about" class="btn">Jelajahi Website</a>
-    </div>
-</section>
-
-
-<!-- TENTANG -->
-<section id="about">
-
-    <div class="title">
-        <h2>Tentang Jurusan TJKT</h2>
-        <p>Mengenal lebih dekat Teknik Jaringan Komputer dan Telekomunikasi</p>
-    </div>
-
-    <div class="about">
-
-        <img
-            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80"
-            alt="Jaringan Komputer">
-
-        <div class="about-text">
-
-            <h3>Teknik Jaringan Komputer dan Telekomunikasi</h3>
-
-            <p>
-                TJKT adalah jurusan yang mempelajari berbagai teknologi
-                jaringan komputer dan telekomunikasi.
-            </p>
-
-            <p>
-                Siswa mempelajari perakitan komputer, instalasi sistem
-                operasi, konfigurasi jaringan, server, perangkat jaringan,
-                keamanan jaringan, fiber optik, dan teknologi komunikasi.
-            </p>
-
-            <p>
-                Pembelajaran TJKT menggabungkan teori dan praktik sehingga
-                siswa dapat mengembangkan keterampilan teknis dan kemampuan
-                pemecahan masalah.
-            </p>
-
+        <p class="footer">Profil jurusan dapat dilihat tanpa login. Untuk melihat atau mengelola data peminjaman, masuk terlebih dahulu.</p>
+        <div style="text-align:center">
+            <a class="register-link" href="daftar_siswa.php">Buat akun siswa</a><br>
+            <a class="public-link" href="beranda.html">Lihat profil jurusan</a>
         </div>
-    </div>
-</section>
-
-
-<!-- GURU -->
-<section class="guru" id="guru">
-
-    <div class="title">
-        <h2>Guru TJKT</h2>
-        <p>Profil guru di jurusan TJKT</p>
-    </div>
-
-    <div class="guru-container">
-
-         <div class="guru-info">
-       <img src="fotoguru/muchamad_anton.png" alt ="muchamad_anton">
-
-     <div class="guru-content">
-        <h3 style="margin-bottom: 5px; color: #f2f5f7; font-size: 1.1rem;">Muchamad Anton Irawan Sardi, S.T</h3>
-        <div class="jabatan" style="color: #0b6177; font-weight: bold; font-size: 0.85rem;">Kepala Program Keahlian TJKT/TKJ</div>
-    </div>
- </div>
-
-        <div class="guru-info">
-            <img src="fotoguru/Agus_Santosa.png" alt ="Agus_Santosa">
-            <div class="guru-content">
-
-       <h3 style="margin-bottom: 5px; color: #f2f5f7; font-size: 1.1rem;">Agus Santosa, S.T, M.T</h3>
-                <div class="jabatan" style="color: #0b6177; font-weight: bold; font-size: 0.85rem;">Guru Produktif TKJ</div>
-    </div>
- </div>
-
-         <div class="guru-info">
-        <img src="fotoguru/Guntur_Irfan.png" alt ="Guntur_Irfan">
-
-    <div class="guru-content">
-        <h3 style="margin-bottom: 5px; color: #f2f5f7; font-size: 1.1rem;">Guntur Irfan Haerudin, S.Kom</h3>
-        <div class="jabatan" style="color: #0b6177; font-weight: bold; font-size: 0.85rem;">Guru Produktif TKJ</div>
-    </div>
- </div>
-
-        <div class="guru-info">
-        <img src="fotoguru/maman_s.png" alt ="maman_s">
-
-     <div class="guru-content">
-        <h3 style="margin-bottom: 5px; color: #f2f5f7; font-size: 1.1rem;">Maman, S.T</h3>
-        <div class="jabatan" style="color: #0b6177; font-weight: bold; font-size: 0.85rem;">Guru Produktif TKJ</div>
-    </div>
- </div>
-
-        <div class="guru-info">
-        <img src="fotoguru/maman_t.png" alt ="maman_t">
-
-     <div class="guru-content">
-        <h3 style="margin-bottom: 5px; color: #f2f5f7; font-size: 1.1rem;">Maman Tarkiman, S.T</h3>
-        <div class="jabatan" style="color: #0b6177; font-weight: bold; font-size: 0.85rem;">Guru Produktif TKJ</div>
-    </div>
- </div>
-
-        <div class="guru-info">
-       <img src="fotoguru/Nurwati.png" alt ="Nurwati">
-
-     <div class="guru-content">
-        <h3 style="margin-bottom: 5px; color: #f2f5f7; font-size: 1.1rem;">Nurwati, S.Kom.</h3>
-        <div class="jabatan" style="color: #0b6177; font-weight: bold; font-size: 0.85rem;">Guru Produktif TKJ</div>
-    </div>
- </div>
-
-    </div>
-</section>
-
-
-<!-- KOMPETENSI -->
-<section class="kompetensi" id="kompetensi">
-
-    <div class="title">
-        <h2>Kompetensi TJKT</h2>
-        <p>Keahlian yang dikembangkan oleh siswa</p>
-    </div>
-
-    <div class="skill-container">
-
-        <div class="skill">
-            <div class="icon">🖥️</div>
-            <h3>Komputer</h3>
-            <p>Perakitan, instalasi dan troubleshooting komputer.</p>
-        </div>
-
-        <div class="skill">
-            <div class="icon">🌐</div>
-            <h3>Jaringan</h3>
-            <p>Instalasi dan konfigurasi jaringan komputer.</p>
-        </div>
-
-        <div class="skill">
-            <div class="icon">🗄️</div>
-            <h3>Server</h3>
-            <p>Administrasi sistem dan layanan server.</p>
-        </div>
-
-        <div class="skill">
-            <div class="icon">📡</div>
-            <h3>Wireless</h3>
-            <p>Konfigurasi jaringan nirkabel dan access point.</p>
-        </div>
-
-        <div class="skill">
-            <div class="icon">🔒</div>
-            <h3>Security</h3>
-            <p>Dasar keamanan dan perlindungan jaringan.</p>
-        </div>
-
-        <div class="skill">
-            <div class="icon">💡</div>
-            <h3>Fiber Optik</h3>
-            <p>Mengenal media transmisi fiber optik.</p>
-        </div>
-
-        <div class="skill">
-            <div class="icon">⚙️</div>
-            <h3>Router</h3>
-            <p>Konfigurasi perangkat jaringan dan routing.</p>
-        </div>
-
-        <div class="skill">
-            <div class="icon">📱</div>
-            <h3>Telekomunikasi</h3>
-            <p>Mempelajari komunikasi data dan telekomunikasi.</p>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- MATERI -->
-<section id="materi">
-
-    <div class="title">
-        <h2>Materi Pembelajaran</h2>
-        <p>Beberapa materi yang dipelajari di jurusan TJKT</p>
-    </div>
-
-    <div class="materi-container">
-
-        <div class="materi">
-            <h3>🔌 Dasar Jaringan</h3>
-            <p>
-                Pengenalan LAN, WAN, topologi jaringan,
-                IP Address dan perangkat jaringan.
-            </p>
-        </div>
-
-        <div class="materi">
-            <h3>🖥️ Sistem Operasi</h3>
-            <p>
-                Instalasi dan konfigurasi sistem operasi
-                komputer maupun server.
-            </p>
-        </div>
-
-        <div class="materi">
-            <h3>🌐 TCP/IP</h3>
-            <p>
-                Mempelajari protokol jaringan,
-                IP Address, subnetting dan komunikasi data.
-            </p>
-        </div>
-
-        <div class="materi">
-            <h3>📡 Wireless</h3>
-            <p>
-                Pengenalan Wi-Fi, access point,
-                keamanan wireless dan konfigurasi jaringan.
-            </p>
-        </div>
-
-        <div class="materi">
-            <h3>💡 Fiber Optik</h3>
-            <p>
-                Mengenal kabel fiber optik,
-                media transmisi dan dasar instalasinya.
-            </p>
-        </div>
-
-        <div class="materi">
-            <h3>🔐 Keamanan Jaringan</h3>
-            <p>
-                Dasar firewall, keamanan sistem,
-                autentikasi dan perlindungan jaringan.
-            </p>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- KEGIATAN -->
-<section class="kegiatan" id="kegiatan">
-
-    <div class="title">
-        <h2>Kegiatan & Proyek TJKT</h2>
-        <p>Contoh kegiatan praktik siswa</p>
-    </div>
-
-    <div class="project-container">
-
-        <div class="project">
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80">
-
-            <div class="project-content">
-                <h3>Perakitan Komputer</h3>
-                <p>
-                    Siswa melakukan praktik pemasangan komponen
-                    komputer dan pengujian perangkat.
-                </p>
-            </div>
-        </div>
-
-
-        <div class="project">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80">
-
-            <div class="project-content">
-                <h3>Praktik Jaringan</h3>
-                <p>
-                    Membuat jaringan LAN dan melakukan konfigurasi
-                    perangkat jaringan.
-                </p>
-            </div>
-        </div>
-
-
-        <div class="project">
-            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80">
-
-            <div class="project-content">
-                <h3>Project Server</h3>
-                <p>
-                    Siswa mempraktikkan instalasi dan konfigurasi
-                    layanan server jaringan.
-                </p>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- DATA PERALATAN -->
-<section class="data-peralatan" id="data-peralatan">
-
-    <div class="title">
-        <h2>Data Peralatan</h2>
-        <p>Informasi data peralatan dan bahan ajar</p>
-        <a href="index.php" class="btn">Lihat Data Alat</a>
-    </div>
-</section>
-
-<!--DATA SISWA-->
-<section class="data-siswa" id="data-siswa">
-
-    <div class="title">
-        <h2>Data Siswa</h2>
-        <p>Informasi data siswa</p>
-        <a href="siswa.php" class="btn">Lihat Data Siswa</a>
-    </div>
-
-</section>
-
-<!-- KONTAK -->
-<section id="kontak">
-
-    <div class="title">
-        <h2>Kontak Jurusan</h2>
-        <p>Informasi dan kontak Jurusan TJKT</p>
-    </div>
-
-    <div class="contact">
-
-        <div class="contact-box">
-
-            <h3>Jurusan TJKT</h3>
-
-            <p>🏫 SMKN 1 MAJA</p>
-            <p>📍 Jl. Pasukan Sindangkasih No.155 Maja Selatan - Maja Kab. Majalengka</p>
-            <p>📧 tjkt@smkn1maja.sch.id</p>
-            <p>📞 0233-282480</p>
-
-            <br>
-
-            <a href="#home" class="btn">Kembali ke Atas</a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<footer>
-    <p>
-        © 2026 <span>Jurusan TJKT</span> |
-        Portofolio Teknik Jaringan Komputer dan Telekomunikasi
-    </p>
-</footer>
-
-
+    </main>
 </body>
 </html>

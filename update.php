@@ -1,5 +1,7 @@
 <?php
 include "koneksi.php";
+require_once "auth.php";
+auth_wajib_peran('guru');
 $error = "";
 $id = filter_var($_GET['id'] ?? '', FILTER_VALIDATE_INT);
 

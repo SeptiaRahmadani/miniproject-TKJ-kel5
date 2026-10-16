@@ -1,6 +1,8 @@
 <?php
 // Koneksi database
 include "koneksi.php";
+require_once "auth.php";
+auth_wajib_peran('guru');
 
 // Ambil data alat
 $query_alat = "SELECT * FROM data_alat ORDER BY id ASC";
@@ -27,8 +29,9 @@ $total_jenis_alat = count($data_alat);
             <p class="text-muted mb-0">Sistem pengelolaan alat praktik jaringan</p>
         </div>
         <div class="d-flex gap-2">
-            <a href="index.html" class="btn btn-outline-light me-2">🏠 Halaman Utama</a>
+            <a href="beranda.html" class="btn btn-outline-light me-2">🏠 Halaman Utama</a>
             <a href="siswa.php" class="btn btn-outline-primary">Data Siswa</a>
+            <a href="peminjaman.php" class="btn btn-outline-primary">Data Peminjaman</a>
             <a href="tambah.php" class="btn btn-success">+ Tambah Alat</a>
         </div>
     </div>
