@@ -3,43 +3,48 @@ include "koneksi.php";
 
 $error = "";
 
-// 1. Cek apakah ada parameter ID di URL
-if (!isset($_GET['id']) || empty($_GET['id'])) {
+$id = filter_var($_GET['id'] ?? '', FILTER_VALIDATE_INT);
+if ($id === false || $id < 1) {
     header("Location: siswa.php");
     exit;
 }
 
-$id = (int) $_GET['id'];
-
-// 2. Ambil data siswa yang akan di-update berdasarkan ID
-$query_cek = "SELECT * FROM data_siswa WHERE id = $id";
+$query_cek = "SELECT *, No_hp AS no_hp FROM data_siswa WHERE id = $id";
 $result = mysqli_query($koneksi, $query_cek);
 $row = mysqli_fetch_assoc($result);
 
-// Jika data tidak ditemukan di database
 if (!$row) {
     header("Location: siswa.php");
     exit;
 }
 
-// 3. Proses penyimpanan saat tombol form diklik
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
-    $nama_siswa = trim($_POST['nama_siswa']);
-    $kelas      = trim($_POST['kelas']);
-    $JK         = trim($_POST['JK']);
-    $No_hp      = trim($_POST['No_hp']);
+    $nama_siswa = trim($_POST['nama_siswa'] ?? '');
+    $kelas = trim($_POST['kelas'] ?? '');
+    $JK = trim($_POST['JK'] ?? '');
+    $No_hp = trim($_POST['No_hp'] ?? '');
 
-    // Query SQL untuk update data siswa
-    $query_update = "UPDATE data_siswa SET nama_siswa = '$nama_siswa', kelas = '$kelas', JK = '$JK', No_hp = '$No_hp' WHERE id = $id";
-    $hasil = mysqli_query($koneksi, $query_update);
-
-    if ($hasil) {
-        // Jika berhasil, arahkan kembali ke halaman data siswa
-        header("Location: siswa.php");
-        exit;
+    if ($nama_siswa === '' || $kelas === '' || $JK === '' || $No_hp === '') {
+        $error = "Semua data siswa wajib diisi.";
     } else {
-        $error = "Error: " . mysqli_error($koneksi);
+        try {
+            $query_update = "UPDATE data_siswa SET nama_siswa = ?, kelas = ?, JK = ?, No_hp = ? WHERE id = ?";
+            $statement = mysqli_prepare($koneksi, $query_update);
+            mysqli_stmt_bind_param($statement, "ssssi", $nama_siswa, $kelas, $JK, $No_hp, $id);
+            mysqli_stmt_execute($statement);
+            mysqli_stmt_close($statement);
+            header("Location: siswa.php");
+            exit;
+        } catch (mysqli_sql_exception $exception) {
+            error_log($exception->getMessage());
+            $error = "Perubahan data siswa gagal disimpan. Silakan coba lagi.";
+        }
     }
+
+    $row['nama_siswa'] = $nama_siswa;
+    $row['kelas'] = $kelas;
+    $row['JK'] = $JK;
+    $row['no_hp'] = $No_hp;
 }
 ?>
 
@@ -57,28 +62,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
         <h2>Update Data Siswa</h2>
         
         <?php if (!empty($error)): ?>
-            <p class="alert-error"><?php echo $error; ?></p>
+            <p class="alert-error"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
         <?php endif; ?>
 
         <form action="" method="POST">
             <div class="form-group">
                 <label for="nama_siswa">Nama Siswa</label>
-                <input type="text" name="nama_siswa" id="nama_siswa" value="<?php echo htmlspecialchars($row['nama_siswa'] ?? ''); ?>" required>
+                <input type="text" name="nama_siswa" id="nama_siswa" value="<?php echo htmlspecialchars((string) ($row['nama_siswa'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>" required>
             </div>
             
             <div class="form-group">
                 <label for="kelas">Kelas</label>
-                <input type="text" name="kelas" id="kelas" value="<?php echo htmlspecialchars($row['kelas'] ?? ''); ?>" required>
+                <input type="text" name="kelas" id="kelas" value="<?php echo htmlspecialchars((string) ($row['kelas'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>" required>
             </div>
             
             <div class="form-group">
                 <label for="JK">Jenis Kelamin</label>
-                <input type="text" name="JK" id="JK" value="<?php echo htmlspecialchars($row['JK'] ?? ''); ?>" required>
+                <input type="text" name="JK" id="JK" value="<?php echo htmlspecialchars((string) ($row['JK'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>" required>
             </div>
             
             <div class="form-group">
                 <label for="No_hp">No HP</label>
-                <input type="text" name="No_hp" id="No_hp" value="<?php echo htmlspecialchars($row['No_hp'] ?? ''); ?>" required>
+                <input type="text" name="No_hp" id="No_hp" value="<?php echo htmlspecialchars((string) ($row['no_hp'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>" required>
             </div>
             
             <div class="form-actions">

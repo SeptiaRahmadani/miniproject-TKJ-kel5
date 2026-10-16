@@ -1,78 +1,111 @@
+/* ==========================================
+   STYLING UTAMA: CYBER-TECH & GLASSMORPHISM
+   ========================================== */
 :root {
-  --navy: #102a43;
-  --blue: #1677ff;
-  --mint: #e9f8f5;
-  --ink: #243b53;
-  --muted: #627d98;
-  --line: #d9e2ec;
+  --navy: #0a192f;
+  --navy-light: #172a45;
+  --primary: #00d9ff;
+  --primary-hover: #00b4d8;
+  --ink: #e2e8f0;
+  --muted: #8892b0;
+  --bg-gradient: linear-gradient(135deg, #050b14 0%, #0a192f 100%);
+  --card-bg: rgba(23, 42, 69, 0.75);
+  --border-glow: rgba(0, 217, 255, 0.25);
+  --line: rgba(255, 255, 255, 0.08);
 }
 
-* { box-sizing: border-box; }
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   min-height: 100vh;
-  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   color: var(--ink);
-  background: linear-gradient(135deg, #dfe4eb 0%, #e9e9eb 100%);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  line-height: 1.6;
+  padding: 20px 10px;
 }
-.container { padding-top: 18px; padding-bottom: 42px; }
-.header-tkj {
-  padding: 24px 28px;
+
+/* KONTAINER UTAMA */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 15px;
+}
+
+/* HEADER & KARTU STATISTIK */
+.header-tkj, .card {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glow) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35) !important;
   color: #fff;
-  border-radius: 14px;
-  background: linear-gradient(120deg, var(--navy), #1769aa);
-  box-shadow: 0 12px 28px rgba(16, 42, 67, .18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.header-tkj h2 { font-weight: 700; letter-spacing: -.4px; }
-.header-tkj small { color: #c9e4f7 !important; }
-.tkj-card, .form-card {
-  background: rgba(255, 255, 255, .94);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(36, 59, 83, .09);
+
+.card:hover {
+  border-color: var(--primary) !important;
+  box-shadow: 0 15px 35px rgba(0, 217, 255, 0.15) !important;
 }
-.tkj-card { padding: 10px !important; }
-.table-tkj { margin-bottom: 0; }
-.table-tkj thead th {
-  padding: 15px 12px;
-  color: var(--navy);
-  font-size: .78rem;
-  letter-spacing: .06em;
+
+.card-body {
+  padding: 24px !important;
+}
+
+.card-header {
+  background: rgba(10, 25, 47, 0.9) !important;
+  border-bottom: 1px solid var(--line) !important;
+  padding: 18px 24px !important;
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+}
+
+.card-header h5 {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* TABEL MODERN & ELEGAN */
+.table-responsive {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table {
+  color: var(--ink) !important;
+  margin-bottom: 0 !important;
+  white-space: nowrap;
+}
+
+.table thead th {
+  background: rgba(10, 25, 47, 0.95) !important;
+  color: var(--primary) !important;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  border-bottom: 2px solid var(--line);
+  padding: 16px 14px !important;
+  border-bottom: 2px solid var(--border-glow) !important;
 }
-.table-tkj tbody td { padding: 15px 12px; border-color: #edf2f7; }
-.table-tkj tbody tr { transition: background .2s ease; }
-.table-tkj tbody tr:hover { background: #f1f8ff; }
-.btn { border-radius: 8px; font-weight: 600; transition: transform .2s ease, box-shadow .2s ease; }
-.btn:hover { transform: translateY(-1px); box-shadow: 0 5px 12px rgba(16, 42, 67, .15); }
-.btn-success { background: #159a78; border-color: #159a78; }
-.btn-success:hover { background: #107b61; border-color: #107b61; }
-.btn-warning { color: #604700; background: #ffd166; border-color: #ffd166; }
-.btn-danger { background: #e05252; border-color: #e05252; }
-.form-card { max-width: 620px; margin: 42px auto; padding: 30px; }
-.form-card h2 { margin: 0 0 24px; color: var(--navy); }
-.form-group { margin-bottom: 18px; }
-.form-group label { display: block; margin-bottom: 7px; font-weight: 600; color: var(--ink); }
-.form-group input {
-  width: 100%; padding: 11px 13px; color: var(--ink);
-  border: 1px solid #bcccdc; border-radius: 8px; outline: none;
-  transition: border-color .2s ease, box-shadow .2s ease;
+
+.table tbody td {
+  padding: 16px 14px !important;
+  border-color: var(--line) !important;
+  vertical-align: middle;
+  font-size: 0.95rem;
 }
-.form-group input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(22, 119, 255, .14); }
-.form-actions { display: flex; gap: 10px; align-items: center; margin-top: 24px; }
-.form-actions a { color: var(--muted); text-decoration: none; }
-.form-actions a:hover { color: var(--blue); }
-.alert-error { padding: 12px 14px; margin-bottom: 20px; color: #9b1c1c; background: #fff1f1; border: 1px solid #f5b5b5; border-radius: 8px; }
-@media (max-width: 576px) {
-  .header-tkj { padding: 20px; align-items: flex-start !important; gap: 16px; flex-direction: column; }
-  .header-tkj h2 { font-size: 1.35rem; }
-  .form-card { margin: 24px 12px; padding: 22px; }
-  .table-tkj { min-width: 680px; }
+
+.table tbody tr {
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 
-/* --- CSS UNTUK MENYAMAKAN GAYA DENGAN BAGIAN KEGIATAN --- */
 .guru-container {
     display: flex;
     flex-wrap: wrap;

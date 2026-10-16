@@ -68,6 +68,7 @@
 
         /* SHARED SECTION BACKGROUND */
         section {
+            padding: 90px 8%;
             background:
                 linear-gradient(rgba(4, 15, 35, .85), rgba(4, 15, 35, .9)),
                 url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80");
@@ -117,11 +118,6 @@
         .btn:hover {
             transform: translateY(-3px);
             background: white;
-        }
-
-        /* GENERAL */
-        section {
-            padding: 90px 8%;
         }
 
         .title {
@@ -208,7 +204,7 @@
             margin-bottom: 12px;
         }
 
-        .guru-info p {
+        .info-guru p {
             color: #68758a;
             line-height: 1.6;
         }
@@ -352,6 +348,7 @@
             }
 
             .guru-container,
+            .materi-container,
             .project-container {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -370,12 +367,29 @@
         }
 
         @media(max-width: 600px) {
+            nav {
+                height: auto;
+                min-height: 70px;
+                padding: 12px 18px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
             nav ul {
-                display: none;
+                flex-wrap: wrap;
+                gap: 8px 12px;
+            }
+
+            nav ul li a {
+                font-size: 12px;
             }
 
             .hero h1 {
                 font-size: 35px;
+            }
+
+            .hero {
+                padding-top: 145px;
             }
 
             .hero p {
@@ -383,6 +397,7 @@
             }
 
             .guru-container,
+            .materi-container,
             .project-container,
             .skill-container {
                 grid-template-columns: 1fr;
@@ -408,7 +423,7 @@
             <li><a href="#kompetensi">Kompetensi</a></li>
             <li><a href="#materi">Materi</a></li>
             <li><a href="#kegiatan">Kegiatan</a></li>
-            <li><a href="#data-peminjaman">Data Peminjaman</a></li>
+            <li><a href="#data-peralatan">Data Peminjaman</a></li>
             <li><a href="#kontak">Kontak</a></li>
         </ul>
     </nav>
@@ -418,7 +433,7 @@
 <!-- HOME -->
 <section class="hero" id="home">
     <div class="hero-content">
-        <h1>SELAMAT DATANG DI<span>JURUSAN TJKT</span></h1>
+        <h1>SELAMAT DATANG DI <span>JURUSAN TJKT</span></h1>
 
         <p>
             Teknik Jaringan Komputer dan Telekomunikasi merupakan bidang
@@ -481,7 +496,7 @@
 
     <div class="guru-container">
 
-         <div class="info-guru">
+         <div class="guru-info">
        <img src="fotoguru/muchamad_anton.png" alt ="muchamad_anton">
 
      <div class="guru-content">
@@ -490,7 +505,7 @@
     </div>
  </div>
 
-        <div class="info-guru">
+        <div class="guru-info">
             <img src="fotoguru/Agus_Santosa.png" alt ="Agus_Santosa">
             <div class="guru-content">
 
@@ -499,7 +514,7 @@
     </div>
  </div>
 
-         <div class="info-guru">
+         <div class="guru-info">
         <img src="fotoguru/Guntur_Irfan.png" alt ="Guntur_Irfan">
 
     <div class="guru-content">
@@ -508,7 +523,7 @@
     </div>
  </div>
 
-        <div class="info-guru">
+        <div class="guru-info">
         <img src="fotoguru/maman_s.png" alt ="maman_s">
 
      <div class="guru-content">
@@ -517,7 +532,7 @@
     </div>
  </div>
 
-        <div class="info-guru">
+        <div class="guru-info">
         <img src="fotoguru/maman_t.png" alt ="maman_t">
 
      <div class="guru-content">
@@ -526,7 +541,7 @@
     </div>
  </div>
 
-        <div class="info-guru">
+        <div class="guru-info">
        <img src="fotoguru/Nurwati.png" alt ="Nurwati">
 
      <div class="guru-content">
@@ -749,9 +764,9 @@
 
             <h3>Jurusan TJKT</h3>
 
-            <p>🏫 SMKN 1 NAJA</p>
+            <p>🏫 SMKN 1 MAJA</p>
             <p>📍 Jl. Pasukan Sindangkasih No.155 Maja Selatan - Maja Kab. Majalengka</p>
-            <p>📧 tjkt@smkn1naja.sch.id</p>
+            <p>📧 tjkt@smkn1maja.sch.id</p>
             <p>📞 0233-282480</p>
 
             <br>

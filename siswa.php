@@ -65,12 +65,13 @@ $total_siswa = count($data_siswa);
                             <td><?php echo htmlspecialchars($row['nama_siswa'] ?? ''); ?></td>
                             <td><?php echo htmlspecialchars($row['kelas'] ?? ''); ?></td>
                             <td><?php echo htmlspecialchars($row['JK'] ?? ''); ?></td>
-                            <td><?php echo htmlspecialchars($row['No_Hp'] ?? ''); ?></td>
+                            <td><?php echo htmlspecialchars($row['No_hp'] ?? $row['No_Hp'] ?? ''); ?></td>
                             <td class="text-center text-nowrap">
                                 <a href="update_siswa.php?id=<?php echo urlencode($row['id'] ?? ''); ?>" class="btn btn-warning btn-sm">Update</a>
-                                <a href="delete_siswa.php?id=<?php echo urlencode($row['id'] ?? ''); ?>"
-                                   class="btn btn-danger btn-sm"
-                                   onclick="return confirm('Yakin ingin menghapus data siswa ini?');">Delete</a>
+                                <form class="d-inline" action="delete_siswa.php" method="post" onsubmit="return confirm('Yakin ingin menghapus data siswa ini?');">
+                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars((string) ($row['id'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
                             </td>
                         </tr>
                         <?php endforeach; ?>
