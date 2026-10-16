@@ -70,3 +70,42 @@ body {
   .form-card { margin: 24px 12px; padding: 22px; }
   .table-tkj { min-width: 680px; }
 }
+
+
+/* --- CSS UNTUK MENYAMAKAN GAYA DENGAN BAGIAN KEGIATAN --- */
+.guru-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-guru {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(36, 59, 83, .09);
+    border: 1px solid var(--line, #d9e2ec);
+    width: 320px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.info-guru:hover {
+    transform: translateY(-5px);
+}
+
+.info-guru img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    background: #f8f9fa;
+    padding-top: 10px;
+}
+
+.guru-content {
+    padding: 20px;
+    text-align: center;
+}
