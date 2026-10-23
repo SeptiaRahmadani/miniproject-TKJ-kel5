@@ -8,13 +8,6 @@ if (!in_array($alamat, ['127.0.0.1', '::1'], true)) {
     exit('Penyiapan akun guru hanya dapat dilakukan dari komputer server.');
 }
 
-$jumlah_guru = mysqli_query($koneksi, "SELECT COUNT(*) AS total FROM akun_pengguna WHERE role = 'guru'");
-$sudah_ada_guru = (int) mysqli_fetch_assoc($jumlah_guru)['total'] > 0;
-if ($sudah_ada_guru) {
-    header('Location: login.php?role=guru');
-    exit;
-}
-
 if (empty($_SESSION['token_setup_guru'])) {
     $_SESSION['token_setup_guru'] = bin2hex(random_bytes(32));
 }
@@ -29,8 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Sesi penyiapan tidak valid. Muat ulang halaman.";
     } elseif (!preg_match('/^[A-Za-z0-9._-]{3,50}$/', $username)) {
         $error = "Username harus 3-50 karakter dan hanya boleh berisi huruf, angka, titik, garis bawah, atau tanda hubung.";
-    } elseif (strlen($password) < 10) {
-        $error = "Kata sandi guru minimal 10 karakter.";
+    } elseif (strlen($password) < 8) {
+        $error = "Kata sandi guru minimal 8 karakter.";
     } else {
         try {
             $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -61,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <div class="form-card">
     <h2>Penyiapan Akun Guru</h2>
-    <p class="text-muted">Buat akun guru pertama. Halaman ini hanya tersedia dari komputer server dan akan dikunci setelah akun guru dibuat.</p>
+    <p class="text-muted">Buat akun guru baru. Halaman ini hanya tersedia dari komputer server.</p>
     <?php if ($error !== ''): ?>
         <p class="alert-error"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
     <?php endif; ?>
@@ -72,8 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input id="username" name="username" minlength="3" maxlength="50" pattern="[A-Za-z0-9._-]+" autocomplete="username" required>
         </div>
         <div class="form-group">
-            <label for="password">Kata sandi (minimal 10 karakter)</label>
-            <input type="password" id="password" name="password" minlength="10" autocomplete="new-password" required>
+            <label for="password">Kata sandi (minimal 8 karakter)</label>
+            <input type="password" id="password" name="password" minlength="8" autocomplete="new-password" required>
         </div>
         <div class="form-actions">
             <button class="btn btn-primary" type="submit">Buat Akun Guru</button>

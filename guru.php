@@ -60,6 +60,15 @@ $pengguna = auth_wajib_peran('guru');
                 </div>
             </a>
         </div>
+        <div class="col-12 col-md-4">
+            <a class="card role-card h-100 text-decoration-none" href="akun_guru.php">
+                <div class="card-body">
+                    <div class="role-card-icon">👩‍🏫</div>
+                    <h3 class="h5">Akun Guru</h3>
+                    <p class="text-muted mb-0">Buat akun login untuk guru lain.</p>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
 </body>

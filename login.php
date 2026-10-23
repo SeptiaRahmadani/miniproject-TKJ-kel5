@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </form>
         <?php if ($peran === 'guru'): ?>
-            <p class="mt-4 mb-0 text-muted">Belum menyiapkan akun guru? <a href="setup_guru.php">Buat akun guru pertama dari komputer server</a></p>
+            <p class="mt-4 mb-0 text-muted">Belum punya akun guru? <a href="setup_guru.php">Buat akun guru baru dari komputer server</a></p>
         <?php else: ?>
             <p class="mt-4 mb-0 text-muted">Belum punya akun? <a href="daftar_siswa.php">Buat akun siswa</a></p>
         <?php endif; ?>
