@@ -28,12 +28,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buat_akun'])) {
             $jenis_pesan = 'success';
         } catch (mysqli_sql_exception $exception) {
             error_log($exception->getMessage());
-            $pesan = "Akun gagal dibuat. Username mungkin sudah dipakai atau siswa sudah memiliki akun.";
+            $pesan = $exception->getCode() === 1062
+                ? "Username sudah digunakan atau siswa sudah memiliki akun."
+                : "Akun gagal dibuat karena terjadi masalah pada database. Hubungi administrator.";
         }
     }
 }
 
-$data_siswa = peminjaman_ambil_siswa($koneksi);
+$hasil_siswa = mysqli_query(
+    $koneksi,
+    "SELECT s.id, s.nama_siswa, s.kelas
+     FROM data_siswa s
+     WHERE NOT EXISTS (
+         SELECT 1 FROM akun_pengguna a WHERE a.id_siswa = s.id
+     )
+     ORDER BY s.nama_siswa"
+);
+$data_siswa = mysqli_fetch_all($hasil_siswa, MYSQLI_ASSOC);
+$hasil_jumlah_siswa = mysqli_query($koneksi, "SELECT COUNT(*) AS total FROM data_siswa");
+$belum_ada_data_siswa = (int) mysqli_fetch_assoc($hasil_jumlah_siswa)['total'] === 0;
 $hasil_akun = mysqli_query($koneksi, "SELECT s.id, s.nama_siswa, s.kelas, a.username FROM data_siswa s LEFT JOIN akun_pengguna a ON a.id_siswa = s.id ORDER BY s.nama_siswa");
 $akun_siswa = mysqli_fetch_all($hasil_akun, MYSQLI_ASSOC);
 ?>
@@ -68,7 +81,11 @@ $akun_siswa = mysqli_fetch_all($hasil_akun, MYSQLI_ASSOC);
                 <div class="col-12 col-md-4">
                     <label class="form-label" for="id_siswa">Siswa</label>
                     <select class="form-select" id="id_siswa" name="id_siswa" required>
-                        <option value="">Pilih siswa</option>
+                        <?php if (empty($data_siswa)): ?>
+                            <option value=""><?php echo $belum_ada_data_siswa ? 'Belum ada data siswa' : 'Semua siswa sudah memiliki akun'; ?></option>
+                        <?php else: ?>
+                            <option value="">Pilih siswa</option>
+                        <?php endif; ?>
                         <?php foreach ($data_siswa as $siswa): ?>
                             <option value="<?php echo (int) $siswa['id']; ?>"><?php echo htmlspecialchars((string) $siswa['nama_siswa'] . ' - ' . (string) $siswa['kelas'], ENT_QUOTES, 'UTF-8'); ?></option>
                         <?php endforeach; ?>
@@ -83,7 +100,7 @@ $akun_siswa = mysqli_fetch_all($hasil_akun, MYSQLI_ASSOC);
                     <input class="form-control" type="password" id="password" name="password" minlength="8" autocomplete="new-password" required>
                 </div>
                 <div class="col-12 col-md-2 d-flex align-items-end">
-                    <button class="btn btn-primary" type="submit" name="buat_akun">Buat Akun</button>
+                    <button class="btn btn-primary" type="submit" name="buat_akun" <?php echo empty($data_siswa) ? 'disabled' : ''; ?>>Buat Akun</button>
                 </div>
             </form>
         </div>

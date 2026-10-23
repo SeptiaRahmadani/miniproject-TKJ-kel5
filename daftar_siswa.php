@@ -57,7 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         } catch (mysqli_sql_exception $exception) {
             error_log($exception->getMessage());
-            $error = "Akun gagal dibuat. Username mungkin sudah digunakan atau data siswa sudah memiliki akun.";
+            $error = $exception->getCode() === 1062
+                ? "Username sudah digunakan atau data siswa sudah memiliki akun."
+                : "Akun gagal dibuat karena terjadi masalah pada database. Hubungi administrator.";
         }
     }
 }
@@ -71,6 +73,8 @@ $hasil_siswa = mysqli_query(
      ORDER BY s.nama_siswa"
 );
 $data_siswa = mysqli_fetch_all($hasil_siswa, MYSQLI_ASSOC);
+$hasil_jumlah_siswa = mysqli_query($koneksi, "SELECT COUNT(*) AS total FROM data_siswa");
+$belum_ada_data_siswa = (int) mysqli_fetch_assoc($hasil_jumlah_siswa)['total'] === 0;
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -89,7 +93,7 @@ $data_siswa = mysqli_fetch_all($hasil_siswa, MYSQLI_ASSOC);
         <p class="alert-error"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
     <?php endif; ?>
     <?php if (empty($data_siswa)): ?>
-        <p class="text-muted">Semua data siswa sudah memiliki akun. Jika ini keliru, hubungi guru.</p>
+        <p class="text-muted"><?php echo $belum_ada_data_siswa ? 'Belum ada data siswa yang terdaftar. Hubungi guru untuk menambahkan data siswa.' : 'Semua data siswa sudah memiliki akun. Jika ini keliru, hubungi guru.'; ?></p>
     <?php else: ?>
         <form method="post">
             <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION['token_daftar_siswa'], ENT_QUOTES, 'UTF-8'); ?>">

@@ -43,7 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         } catch (mysqli_sql_exception $exception) {
             error_log($exception->getMessage());
-            $error = "Akun guru gagal dibuat. Username mungkin sudah dipakai.";
+            $error = $exception->getCode() === 1062
+                ? "Username sudah digunakan."
+                : "Akun guru gagal dibuat karena terjadi masalah pada database. Hubungi administrator.";
         }
     }
 }
