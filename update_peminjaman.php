@@ -11,7 +11,7 @@ if ($id === false || $id < 1) {
     exit;
 }
 
-$statement = mysqli_prepare($koneksi, "SELECT id, hari, tanggal_pinjam, status, batas_waktu FROM peminjaman WHERE id = ?");
+$statement = mysqli_prepare($koneksi, "SELECT id, id_siswa, hari, tanggal_pinjam, status, batas_waktu FROM peminjaman WHERE id = ?");
 mysqli_stmt_bind_param($statement, "i", $id);
 mysqli_stmt_execute($statement);
 $hasil = mysqli_stmt_get_result($statement);
